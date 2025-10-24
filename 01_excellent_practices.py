@@ -46,9 +46,20 @@ class Task:
             self.tags = []
 
     def mark_completed(self) -> None:
-        """Mark the task as completed."""
+        """
+        Mark the task as completed and send notification.
+        
+        This method updates the task status and provides user feedback
+        through both logging and console notification.
+        """
         self.completed = True
         logger.info(f"Task '{self.title}' marked as completed")
+        
+        # Provide immediate user feedback
+        print(f"✅ Task completed: {self.title}")
+        
+        # Log completion for analytics
+        logger.info(f"Task completion: priority={self.priority.name}, tags={self.tags}")
 
     def add_tag(self, tag: str) -> None:
         """
