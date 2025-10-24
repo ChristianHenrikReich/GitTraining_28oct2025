@@ -40,8 +40,14 @@ class BankAccount:
             return True
         return False
     
-    def get_balance(self):
-        return self.balance
+    def get_balance(self) -> str:
+        """
+        Get formatted account balance as currency string.
+        
+        Returns:
+            Balance formatted as currency (e.g., "$1,234.56")
+        """
+        return f"${self.balance:,.2f}"
     
     def get_transaction_history(self):
         return self.transaction_history.copy()
