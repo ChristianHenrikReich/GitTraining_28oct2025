@@ -163,6 +163,22 @@ Use this checklist when examining the files:
 4. **Week 4**: Practice refactoring and improvement
 5. **Week 5**: Team code reviews and Git collaboration
 
+## Recent Enhancements
+
+The `good-commit-practices` branch demonstrates proper Git workflow with:
+
+### New Features & Improvements
+- ✅ **Task Notifications**: Visual feedback with checkmarks when tasks are completed
+- 🔧 **Currency Formatting**: Account balances now display as properly formatted currency
+- 🛡️ **Enhanced Error Handling**: Robust data loading with per-record error recovery
+- ⚙️ **Configuration System**: Centralized app configuration with feature flags
+- 🔧 **Utility Functions**: Common utilities for validation, formatting, and ID generation
+
+### Branch Comparison for Learning
+- `main`: Original course files with clean structure
+- `good-commit-practices`: Demonstrates atomic commits and clear messages
+- `bad-commit-example`: Shows what NOT to do (mixed concerns, vague messages)
+
 ## Warning ⚠️
 
 Files 8-10 contain intentionally terrible code with anti-patterns that should **NEVER** be used in real projects. They are educational examples of what to avoid.
