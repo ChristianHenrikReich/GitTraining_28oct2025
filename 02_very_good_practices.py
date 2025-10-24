@@ -98,8 +98,10 @@ class UserRepository:
 
 
 def validate_email(email: str) -> bool:
-    """Basic email validation."""
-    return '@' in email and '.' in email.split('@')[1]
+    """Enhanced email validation with regex."""
+    import re
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
 
 
 def create_user_interactive():

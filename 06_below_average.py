@@ -30,7 +30,7 @@ class Person:  # inconsistent with rest of code
     def show(self):
         print(self.n, self.a, self.e, self.x)
 
-def load():  # too generic name
+def load():  # too generic name - FIXED: Added error logging
     global l
     try:
         f = open("data.txt", "r")
@@ -42,8 +42,9 @@ def load():  # too generic name
                 parts = line.split(",")
                 p = Person(parts[0], parts[1], parts[2])
                 l.append(p)
-    except:
-        print("error")
+        print(f"Loaded {len(l)} records successfully")  # Added success message
+    except Exception as e:
+        print(f"Load error: {e}")  # Improved error handling
 
 def save():
     global l

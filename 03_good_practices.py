@@ -41,7 +41,8 @@ class BankAccount:
         return False
     
     def get_balance(self):
-        return self.balance
+        """Get account balance with formatting."""
+        return f"${self.balance:.2f}"
     
     def get_transaction_history(self):
         return self.transaction_history.copy()

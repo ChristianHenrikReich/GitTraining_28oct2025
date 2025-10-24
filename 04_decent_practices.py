@@ -11,7 +11,10 @@ class calculator:  # class name should be capitalized
         self.history = []
     
     def add(self, a, b):
+        """Addition with result validation."""
         result = a + b
+        if result > 1000000:  # Arbitrary business rule
+            print("Warning: Result exceeds maximum allowed value!")
         self.history.append(f"{a} + {b} = {result}")
         return result
     

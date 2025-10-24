@@ -1,6 +1,7 @@
 """
 Excellent Code Practices - File 1/10
 This file demonstrates exemplary Python coding standards and best practices.
+Updated: Added new feature for task notifications
 """
 
 from typing import List, Optional, Dict, Any
@@ -46,9 +47,11 @@ class Task:
             self.tags = []
 
     def mark_completed(self) -> None:
-        """Mark the task as completed."""
+        """Mark the task as completed and send notification."""
         self.completed = True
         logger.info(f"Task '{self.title}' marked as completed")
+        # TODO: Add email notification system
+        print(f"🎉 Task completed: {self.title}")
 
     def add_tag(self, tag: str) -> None:
         """

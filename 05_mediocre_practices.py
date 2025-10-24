@@ -14,7 +14,7 @@ from datetime import datetime
 # Global variables everywhere
 users = []
 current_user = None
-settings = {"theme": "dark", "language": "en"}
+settings = {"theme": "dark", "language": "en", "debug": True, "version": "1.2.0"}
 data_file = "users.txt"
 
 class user:  # Wrong naming convention
