@@ -43,12 +43,18 @@ class UserRepository:
         self.load_users()
     
     def load_users(self):
-        """Load users from file."""
-        if os.path.exists(self.data_file):
-            try:
-                with open(self.data_file, 'r') as file:
-                    data = json.load(file)
-                    for user_data in data:
+        """Load users from file with improved error handling."""
+        if not os.path.exists(self.data_file):
+            print(f"Data file {self.data_file} does not exist. Starting with empty user list.")
+            return
+            
+        try:
+            with open(self.data_file, 'r') as file:
+                data = json.load(file)
+                loaded_count = 0
+                
+                for user_data in data:
+                    try:
                         user = User(
                             user_data['username'],
                             user_data['email'],
@@ -56,8 +62,17 @@ class UserRepository:
                         )
                         user.is_active = user_data.get('is_active', True)
                         self.users.append(user)
-            except (json.JSONDecodeError, KeyError) as e:
-                print(f"Error loading users: {e}")
+                        loaded_count += 1
+                    except (KeyError, TypeError, ValueError) as e:
+                        print(f"Skipping invalid user record: {e}")
+                        continue
+                        
+                print(f"Successfully loaded {loaded_count} users from {self.data_file}")
+                
+        except json.JSONDecodeError as e:
+            print(f"Error parsing JSON from {self.data_file}: {e}")
+        except IOError as e:
+            print(f"Error reading file {self.data_file}: {e}")
     
     def save_users(self):
         """Save users to file."""
